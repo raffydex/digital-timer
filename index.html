@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Timer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="timer-card">
+
+    <!-- Header: badge, title, mode toggle -->
+    <header class="card-header">
+      <div class="brand">
+        <div class="badge" aria-hidden="true">DT</div>
+        <div>
+          <h1 class="title">Digital Timer</h1>
+          <p class="subtitle" id="subtitle">Countdown - Dark mode only</p>
+        </div>
+      </div>
+
+      <div class="mode-toggle" role="group" aria-label="Timer mode">
+        <button class="mode-btn is-active" id="mode-countdown-btn" type="button" aria-pressed="true">Countdown</button>
+        <button class="mode-btn" id="mode-stopwatch-btn" type="button" aria-pressed="false">Stopwatch</button>
+      </div>
+    </header>
+
+    <!-- Big time display and status text -->
+    <section class="display-row">
+      <p class="time" id="time-display" role="timer">00:05:00</p>
+
+      <div class="meta">
+        <p class="meta-main" id="status-main" aria-live="polite">Ready</p>
+        <p class="meta-sub" id="status-sub">Default: 5 minutes</p>
+      </div>
+    </section>
+
+    <!-- Main controls -->
+    <section class="controls" aria-label="Timer controls">
+      <button class="btn btn-primary" id="start-btn" type="button">Start</button>
+      <button class="btn" id="reset-btn" type="button">Reset</button>
+      <button class="btn btn-alert" id="stop-alarm-btn" type="button" hidden>Stop alarm</button>
+    </section>
+
+    <!-- Quick presets (countdown only) -->
+    <section class="presets" id="presets-section" aria-label="Quick presets">
+      <h2 class="section-label">Quick presets</h2>
+      <div class="preset-list">
+        <button class="preset-btn" type="button" data-seconds="60">1 min</button>
+        <button class="preset-btn" type="button" data-seconds="300">5 min</button>
+        <button class="preset-btn" type="button" data-seconds="600">10 min</button>
+      </div>
+    </section>
+
+    <!-- Custom time (countdown only) -->
+    <form class="time-form" id="time-form" novalidate>
+      <h2 class="section-label">Custom time</h2>
+      <div class="time-fields">
+        <label class="field" for="input-hours">
+          <span>Hours</span>
+          <input id="input-hours" type="number" min="0" max="99" value="0" inputmode="numeric">
+        </label>
+        <label class="field" for="input-minutes">
+          <span>Minutes</span>
+          <input id="input-minutes" type="number" min="0" max="59" value="5" inputmode="numeric">
+        </label>
+        <label class="field" for="input-seconds">
+          <span>Seconds</span>
+          <input id="input-seconds" type="number" min="0" max="59" value="0" inputmode="numeric">
+        </label>
+        <button class="btn" type="submit">Set time</button>
+      </div>
+      <p class="form-error" id="form-error" role="alert"></p>
+    </form>
+
+    <!-- Footer -->
+    <footer class="card-footer">
+      <span id="footer-note">Counts down every second</span>
+      <span>Runs in your browser</span>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
